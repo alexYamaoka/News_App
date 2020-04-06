@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/loginBackground"
     android:padding="10dp"
     android:gravity="center"
     android:orientation="vertical"
@@ -14,6 +15,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorBackGround"
+        android:textStyle="bold"
         android:gravity="center"
         android:layout_marginBottom="40dp"
         android:textSize="30sp"
@@ -27,6 +30,8 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:textSize="20sp"
+        android:background="@color/buttonColor"
+        android:textColor="@color/colorBackGround"
         android:text="Log In"
         android:id="@+id/login" />
 
@@ -35,6 +40,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="20sp"
+        android:background="@color/buttonColor"
+        android:textColor="@color/colorBackGround"
         android:text="Register"
         android:id="@+id/register" />
 

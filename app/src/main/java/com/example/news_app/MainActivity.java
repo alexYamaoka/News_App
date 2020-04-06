@@ -132,9 +132,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     {
                         switch (item.getItemId())
                         {
+                            case R.id.home:
+                                Intent intentHome = new Intent(MainActivity.this, MainActivity.class);
+                                startActivity(intentHome);
+                                return true;
+
                             case R.id.viewSaved:
-                                Intent intent = new Intent(MainActivity.this, ShowSavedArticlesActivity.class);
-                                startActivity(intent);
+                                Intent intentViewSaved = new Intent(MainActivity.this, ShowSavedArticlesActivity.class);
+                                startActivity(intentViewSaved);
                                 return true;
 
                             case R.id.logout:
@@ -147,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         }
                     }
                 });
-
 
                 popupMenu.inflate(R.menu.options_menu);
 
