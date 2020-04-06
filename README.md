@@ -1,4 +1,8 @@
 # News_APP
+Android application to get the most recent news and articles with the ability to save them for future reads.
+Access to over 30,000 news sources with the use of NewsAPI.org
+
+
 
 ![Application Start Up Scene](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/start_screen.png)
 
