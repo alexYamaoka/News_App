@@ -1,4 +1,4 @@
-package com.example.news_app.NewsAPI;
+package com.example.news_app.NewsApi;
 
 import com.example.news_app.Models.News;
 

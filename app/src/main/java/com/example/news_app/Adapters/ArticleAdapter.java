@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.news_app.Models.Article;
+import com.example.news_app.R;
+import com.example.news_app.ShowArticleActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -34,7 +36,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class ArticleAdapter
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder>
 {
     private Context context;
     private List<Article> articleList;
@@ -65,9 +67,9 @@ public class ArticleAdapter
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position)
     {
-        Article article = articleList.get(position);
+        final Article article = articleList.get(position);
 
 
 
@@ -76,8 +78,8 @@ public class ArticleAdapter
 
         Calendar calendar = getFormattedPublishedDateAndTime(article);
 
-        String calendarDate = calendar.get(Calendar.DATE) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" +  calendar.get(Calendar.YEAR);
-        String calendarTime = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE);
+        final String calendarDate = calendar.get(Calendar.DATE) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" +  calendar.get(Calendar.YEAR);
+        final String calendarTime = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE);
         String elapsedTime = getElapsedTime(article);
 
 
@@ -226,6 +228,7 @@ public class ArticleAdapter
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private Calendar getFormattedPublishedDateAndTime(Article article)
     {
         Instant instant = Instant.parse(article.getDatePublished());
@@ -253,6 +256,7 @@ public class ArticleAdapter
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private String getElapsedTime(Article article)
     {
         Instant instant = Instant.parse(article.getDatePublished());

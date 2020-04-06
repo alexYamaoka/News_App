@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardBackgroundColor="@color/colorPrimary"
+    android:layout_margin="10dp"    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"  >
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"    >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/image"         />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/gradient"
+                android:layout_alignBottom="@id/image"  />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:tag="save"
+                android:src="@drawable/ic_save_unfilled"
+                android:id="@+id/save"  />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/image">
+
+                <TextView
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/image"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#c6f6e3"
+                    android:text="Author"
+                    android:maxLines="1"
+                    android:id="@+id/author"        />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/author"
+                    android:paddingLeft="30dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#c6f6e3"
+                    android:text="Published Time"
+                    android:id="@+id/publishedTime" />
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:text="Title"
+            android:id="@+id/title"        />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Date"
+            android:id="@+id/date"          />
+
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Description"
+            android:maxLines="5"
+            android:id="@+id/description"        />
+
+
+
+
+
+
+
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_marginTop="75dp"
+            android:visibility="gone"
+            android:id="@+id/progressBar"         />
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
