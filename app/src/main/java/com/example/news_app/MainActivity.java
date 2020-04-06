@@ -9,6 +9,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.news_app.Adapters.ArticleAdapter;
@@ -81,6 +84,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         onLoadingSwipeRefresh("");
 
 
+        EditText txtSearch = ((EditText)search.findViewById(androidx.appcompat.R.id.search_src_text));
+        txtSearch.setHintTextColor(Color.GRAY);
+        txtSearch.setTextColor(Color.BLACK);
+
+        ImageView searchIcon= search.findViewById(androidx.appcompat.R.id.search_mag_icon);
+        searchIcon.setColorFilter(getResources().getColor(R.color.colorTextTitle), android.graphics.PorterDuff.Mode.SRC_IN);
+
+//        View searchplate = (View)search.findViewById(androidx.appcompat.R.id.search_plate);
+//        searchplate.getBackground().setColorFilter(Color.DKGRAY, PorterDuff.Mode.MULTIPLY);
 
         search.setQueryHint("Search news here...");
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener()

@@ -80,7 +80,7 @@
                 android:layout_below="@id/bar"
                 app:iconifiedByDefault="false"
                 android:clickable="true"
-                android:background="@color/colorTextTitle"
+                android:background="@color/colorBackGround"
                 android:focusableInTouchMode="true"
                 app:queryHint="search"
                 android:id="@id/search"     />
