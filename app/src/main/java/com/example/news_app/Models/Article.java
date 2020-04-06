@@ -3,6 +3,7 @@ package com.example.news_app.Models;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Article implements Serializable
 {
@@ -129,4 +130,5 @@ public class Article implements Serializable
     {
         return description;
     }
+
 }

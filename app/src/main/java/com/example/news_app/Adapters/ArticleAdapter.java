@@ -144,7 +144,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                     hashMap.put("description", article.getDescription());
 
 
-                    reference.child(article.getTitle()).setValue(hashMap);
+                    String text = article.getTitle().replaceAll("[^a-zA-Z0-9]", "");
+                    reference.child(text).setValue(hashMap);
 
 
                     holder.save.setBackgroundResource(R.drawable.ic_save_filled);
@@ -152,7 +153,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 }
                 else
                 {
-                    FirebaseDatabase.getInstance().getReference().child("Saved").child(firebaseUser.getUid()).child("Articles").child(article.getTitle()).removeValue();
+                    String text = article.getTitle().replaceAll("[^a-zA-Z0-9]", "");
+                    FirebaseDatabase.getInstance().getReference().child("Saved").child(firebaseUser.getUid()).child("Articles").child(text).removeValue();
 
                     holder.save.setBackgroundResource(R.drawable.ic_save_unfilled);
                     holder.save.setTag("save");
