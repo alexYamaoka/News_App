@@ -1,6 +1,14 @@
 # News_APP
-Android application to get the most recent news and articles with the ability to save them for future reads.
-Access to over 30,000 news sources with the use of NewsAPI.org
+Android application to get the most recent news and articles from over 30,000 news sources with the use of NewsAPI.org.  
+This application also allows user to save articles they scroll upon in the home screen so they can read them at a later time.  
+
+Tools used: 
+- NewsApi.org
+- Firebase authentication 
+- Firebase real time database 
+- https://github.com/bumptech/glide
+- https://github.com/square/retrofit 
+- https://github.com/ocpsoft/prettytime
 
 
 
