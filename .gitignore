@@ -20,6 +20,10 @@ release/
 # Gradle files
 .gradle/
 build/
+gradle/
+*.gradle
+
+
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -87,4 +91,10 @@ lint/reports/
 .DS_Store
 proguardrules.pro
 values/
+*.properties
+generated/
+*.pro
+*.json  
+BuildConfig.java
+buildConfig/
 
