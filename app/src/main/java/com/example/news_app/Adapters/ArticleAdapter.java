@@ -21,8 +21,11 @@ import com.example.news_app.R;
 import com.example.news_app.ShowArticleActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
@@ -41,7 +44,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     private Context context;
     private List<Article> articleList;
     private List<Article> savedArticleList = new ArrayList<>();
-    private FirebaseAuth myAuth;
 
 
     public ArticleAdapter(Context context, List<Article> articleList)
@@ -90,38 +92,70 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         holder.publishedTime.setText(elapsedTime);
 
 
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(firebaseUser.getUid()).child("Articles");
+
+        reference.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    Article a = snapshot.getValue(Article.class);
+
+                    if (a.getTitle().equals(article.getTitle()))
+                    {
+                        holder.save.setBackgroundResource(R.drawable.ic_save_filled);
+                        holder.save.setTag("saved");
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+            }
+        });
 
         holder.save.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                String userId = firebaseUser.getUid();
+
+
                 if (holder.save.getTag().equals("save"))
                 {
-                    FirebaseUser firebaseUser = myAuth.getCurrentUser();
-                    String userId = firebaseUser.getUid();
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(userId);
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(userId).child("Articles");
 
                     HashMap<String, Object> hashMap = new HashMap<>();
+
+                    hashMap.put("source", article.getSource());
                     hashMap.put("author", article.getAuthor());
                     hashMap.put("title", article.getTitle());
-                    hashMap.put("description", article.getContent());
-                    hashMap.put("date", calendarDate);
-                    hashMap.put("image", article.getUrlToImage());
                     hashMap.put("url", article.getUrl());
+                    hashMap.put("urlToImage", article.getUrlToImage());
+                    hashMap.put("datePublished", article.getDatePublished());
+                    hashMap.put("content", article.getContent());
+                    hashMap.put("description", article.getDescription());
 
-                    reference.setValue(hashMap);
+
+                    reference.push().setValue(hashMap);
 
 
                     holder.save.setBackgroundResource(R.drawable.ic_save_filled);
+                    holder.save.setTag("saved");
                 }
                 else
                 {
-                    FirebaseUser firebaseUser = myAuth.getCurrentUser();
-                    String userId = firebaseUser.getUid();
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(userId);
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(userId).child("Articles");
                     reference.removeValue();
 
+                    holder.save.setBackgroundResource(R.drawable.ic_save_unfilled);
+                    holder.save.setTag("save");
                 }
             }
         });

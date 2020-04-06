@@ -9,7 +9,7 @@ public class Source implements Serializable
     @SerializedName("id")
     private String id;
 
-    @SerializedName("name")
+    @SerializedName("sourceName")
     private String sourceName;
 
 

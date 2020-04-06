@@ -27,7 +27,7 @@ public class Article implements Serializable
     @SerializedName("content")
     private String content;
 
-    @SerializedName("desctiption")
+    @SerializedName("description")
     private String description;
 
 

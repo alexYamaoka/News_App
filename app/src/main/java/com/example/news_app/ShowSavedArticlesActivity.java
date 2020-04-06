@@ -1,5 +1,6 @@
 package com.example.news_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,13 @@ import android.widget.ImageView;
 
 import com.example.news_app.Adapters.ArticleAdapter;
 import com.example.news_app.Models.Article;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,18 +44,58 @@ public class ShowSavedArticlesActivity extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
 
 
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(firebaseUser.getUid()).child("Articles");
+
+
         articleList = new ArrayList<>();
-        articleAdapter = new ArticleAdapter(this, articleList);
-        recyclerView.setAdapter(articleAdapter);
 
 
 
-        if (!articleList.isEmpty())
+        reference.addListenerForSingleValueEvent(new ValueEventListener()
         {
-            articleList.clear();
-        }
 
-        articleList = new ArrayList<>();
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                System.out.println("inside ondatachange");
+                System.out.println("children count: " + dataSnapshot.getChildrenCount());
+
+                for (DataSnapshot snapshot: dataSnapshot.getChildren())
+                {
+                    //System.out.println("datasnapshot: " + dataSnapshot);
+                    Article article = snapshot.getValue(Article.class);
+
+                    System.out.println("*********************************************");
+                    System.out.println("article: " + article.getAuthor());
+                    System.out.println("title: " + article.getTitle());
+                    System.out.println("source: " + article.getSource());
+                    System.out.println("url: " + article.getUrl());
+                    System.out.println("image: " + article.getUrlToImage());
+                    System.out.println("datepublished: " + article.getDatePublished());
+                    System.out.println("descriptioni: " + article.getDescription());
+                    System.out.println("content: " + article.getContent());
+                    System.out.println("*********************************************");
+
+
+                    articleList.add(article);
+                    System.out.println("article added: ");
+
+                }
+
+                articleAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {
+            }
+        });
+
+        System.out.println("article list size: " + articleList.size());
+
+
         articleAdapter = new ArticleAdapter(ShowSavedArticlesActivity.this, articleList);
         recyclerView.setAdapter(articleAdapter);
         articleAdapter.notifyDataSetChanged();
