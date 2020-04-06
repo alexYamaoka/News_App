@@ -44,6 +44,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     private Context context;
     private List<Article> articleList;
     private List<Article> savedArticleList = new ArrayList<>();
+    FirebaseUser firebaseUser;
 
 
     public ArticleAdapter(Context context, List<Article> articleList)
@@ -92,7 +93,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         holder.publishedTime.setText(elapsedTime);
 
 
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(firebaseUser.getUid()).child("Articles");
 
         reference.addListenerForSingleValueEvent(new ValueEventListener()
@@ -143,7 +144,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                     hashMap.put("description", article.getDescription());
 
 
-                    reference.push().setValue(hashMap);
+                    reference.child(article.getTitle()).setValue(hashMap);
 
 
                     holder.save.setBackgroundResource(R.drawable.ic_save_filled);
@@ -151,8 +152,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 }
                 else
                 {
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Saved").child(userId).child("Articles");
-                    reference.removeValue();
+                    FirebaseDatabase.getInstance().getReference().child("Saved").child(firebaseUser.getUid()).child("Articles").child(article.getTitle()).removeValue();
 
                     holder.save.setBackgroundResource(R.drawable.ic_save_unfilled);
                     holder.save.setTag("save");
