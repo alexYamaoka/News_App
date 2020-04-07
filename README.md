@@ -24,10 +24,12 @@ Tools used:
 
 
 ## Home Screen / Save Articles
-![Home Screen gif](readme/home_screen.gif)
+![Home Screen gif](readme/home_screen_with_save.gif)
+
+
 
 ## View Article In Detail
-![View Article In Detail](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/article_detailed.png)
+![View Article In Detail](readme/view_article_detailed.gif)
 
 ## Menu Options
 ![Displaying Menu Options](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/menu_options.png)
