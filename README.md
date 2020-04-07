@@ -26,6 +26,8 @@ Tools used:
 ## Home Screen
 ![Home Screen](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/home_screen.png)
 
+## View Article In Detail
+![View Article In Detail](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/article_detailed.png)
 
 ## Menu Options
 ![Displaying Menu Options](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/menu_options.png)
