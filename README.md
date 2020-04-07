@@ -23,8 +23,8 @@ Tools used:
 ![Register Account Scene](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/register_sceen.png)
 
 
-## Home Screen
-![Home Screen](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/home_screen.png)
+## Home Screen / Save Articles
+![Home Screen gif](readme/home_screen.gif)
 
 ## View Article In Detail
 ![View Article In Detail](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/article_detailed.png)
