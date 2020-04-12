@@ -27,17 +27,11 @@ Tools used:
 ![Home Screen gif](readme/home_screen_with_save.gif)
 
 
-
 ## View Article In Detail
 ![View Article In Detail](readme/view_article_detailed.gif)
 
-## Menu Options
-![Displaying Menu Options](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/menu_options.png)
-
 
 ## Search Articles
-![Search Articles](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/search_articles.png)
+![Search Articles](readme/search_article.gif)
 
 
-## View Saved Articles
-![View Saved Articles](https://raw.githubusercontent.com/alexYamaoka/News_App/master/readme/view_saved.png)
