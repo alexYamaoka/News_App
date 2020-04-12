@@ -127,14 +127,17 @@ public class ShowSavedArticlesActivity extends AppCompatActivity
                             case R.id.home:
                                 Intent intentHome = new Intent(ShowSavedArticlesActivity.this, MainActivity.class);
                                 startActivity(intentHome);
+                                finish();
                                 return true;
 
                             case R.id.viewSaved:
                                 Intent intentViewSaved = new Intent(ShowSavedArticlesActivity.this, ShowSavedArticlesActivity.class);
                                 startActivity(intentViewSaved);
+                                finish();
                                 return true;
 
                             case R.id.logout:
+                                finish();
                                 FirebaseAuth.getInstance().signOut();
                                 startActivity(new Intent(ShowSavedArticlesActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                 return true;
